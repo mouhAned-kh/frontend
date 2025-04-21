@@ -37,7 +37,7 @@ const Footer = ()=>{
             <i className="ri-map-pin-2-fill"></i> Zone Touristique, FSEG/ISIMA, Mahdia
           </p>
           <p><i className="ri-mail-fill"></i> MediPlace@together.com</p>
-          <p><i className="ri-phone-fill"></i> (+216) 53 555 888 <br>(+216) 73 435 348</br> </p>
+          <p><i className="ri-phone-fill"></i> (+216) 53 555 888 <br/> (+216) 73 435 348</p>
          
         </div>
       </div>
