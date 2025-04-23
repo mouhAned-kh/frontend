@@ -1,75 +1,38 @@
-const Navbar = ()=>{
-return (
-    <>
-     <div className="navigation">
-        <ul>
-            <li className="list active">
-                <a href="#">
-                  <span className="icon">
-                    <ion-icon name="home-outline"></ion-icon>
-                  </span>
-                  <span className="text">Home</span> 
-                </a>
-            </li>
+import { useState } from 'react';
+import { IonIcon } from '@ionic/react';
 
-            <li className="list">
-                <a href="#">
-                  <span className="icon">
-                    <ion-icon name="people-circle-outline"></ion-icon>
-                  </span>
-                  <span className="text">About Us</span> 
-                </a>
-            </li>
+const Navbar = () => {
+  const [activeItem, setActiveItem] = useState('home');
 
-            <li className="list">
-                <a href="#">
-                  <span className="icon">
-                    <ion-icon name="settings-outline"></ion-icon>
-                  </span>
-                  <span className="text">Services</span> 
-                </a>
-            </li>
+  const items = [
+    { name: 'home', icon: 'home-outline', text: 'Home' },
+    { name: 'about', icon: 'people-circle-outline', text: 'About Us' },
+    { name: 'services', icon: 'settings-outline', text: 'Services' },
+    { name: 'pages', icon: 'clipboard-outline', text: 'Pages' },
+    { name: 'blog', icon: 'receipt-outline', text: 'Blog' }
+  ];
 
-            <li className="list">
-                <a href="#">
-                  <span className="icon">
-                    <ion-icon name="clipboard-outline"></ion-icon>
-                  </span>
-                  <span className="text">Pages</span> 
-                </a>
-            </li>
-
-            <li className="list">
-                <a href="#">
-                  <span className="icon">
-                    <ion-icon name="receipt-outline"></ion-icon>
-                  </span>
-                  <span className="text">Blog</span> 
-                </a>
-            </li>
-
-             <div className="indicator"></div>
-
-        </ul>
+  return (
+    <div className="navigation">
+      <ul>
+        {items.map((item) => (
+          <li 
+            key={item.name}
+            className={`list font-semibold  ${activeItem === item.name ? 'active ' : ''}`}
+            onClick={() => setActiveItem(item.name)}
+          >
+            <a href= {`/	${item.name}`}>
+              <span className="icon">
+              <IonIcon name={item.icon} />
+              </span>
+              <span className="text">{item.text}</span> 
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div className="indicator"></div>
     </div>
+  );
+};
 
-
-    <script>
-        const list = document.querySelectorAll('.list');
-        function activeLink(){
-            list.forEach((item) =>
-           item.classList.remove('active'));
-           this.classList.add('active');
-        }
-            list.forEach((item) =>
-            item.addEventListener('click',activeLink));
-    </script>
-
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    </>
-)
-}
-export default Navbar
+export default Navbar;
